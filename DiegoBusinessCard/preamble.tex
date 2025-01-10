@@ -1,0 +1,74 @@
+% !TEX root = main.tex
+
+% ##############
+% Codificación para el idioma español
+% ##############
+\usepackage[T1]{fontenc} % output
+
+% ##############
+% Dimensiones del documento
+% ##############
+\usepackage{geometry}
+\geometry{
+    paperwidth=3.5in,
+    paperheight=2in,
+    margin=0cm
+}
+
+% ##############
+% Formato de parrafos
+% ##############
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+% ##############
+% Modificar la fuente del texto
+% ##############
+
+% Estilo de Fonts
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue}
+\newfontfamily{\titlefont}{Avenir}
+
+% ##############
+% Xcolor
+% ##############
+\usepackage{xcolor}
+\definecolor{linkcolor}{HTML}{8b8c8b}
+
+% ##############
+% Cargar SVG
+% ##############
+\usepackage{graphicx}
+\graphicspath{{SVG/}}
+
+% ##############
+% Cargar SVG
+% ##############
+\usepackage{tikz}
+
+% ##############
+% Hipervinculos
+% ##############
+\usepackage[hidelinks]{hyperref}
+\hypersetup{%
+	pdfauthor={Diego Gonzalez},
+	pdfkeywords={business card, mix, mastering, audio},
+	pdftitle={Mix and mastering},
+	pdfsubject={Diego's business card, he mixes and masters your songs %
+	as well as possible.}
+}
+
+% Url personalizado
+\usepackage{adjustbox}
+%\newcommand{\myurl}[1]{\adjustbox{cframe=linkcolor {2pt} {2pt}}{\url{#1}}}
+\newcommand{\myhref}[2]{\adjustbox{cframe=linkcolor {.65pt} {.75pt}}{\href{#1}{#2}}}
+
+% /Applications/Inkscape.app/Contents/MacOS/inkscape -D --export-dpi=800 --file=FrontBC.svg --export-pdf=FrontBC.pdf --export-latex
+
+% ##############
+% Paquetes de Visualización para crear el documento
+% ##############
+% \usepackage{layout}
+% \usepackage{showframe}
+% \usepackage{lipsum}
