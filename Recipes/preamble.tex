@@ -1,0 +1,176 @@
+% ##############
+% Paquetes de Visualización para crear el documento
+% ##############
+% \usepackage{layout}
+% \usepackage{showframe}
+\usepackage{lipsum}
+
+% ##############
+% Metadata
+% ##############
+\input{metadata}
+
+% ##############
+% Codificación para el idioma español
+% ##############
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % output
+
+% ##############
+% Dimensiones del documento
+% ##############
+\usepackage{geometry}
+\geometry{%
+    letterpaper,
+    margin = .5in,
+    marginparsep = 0.1in,
+    marginparwidth = .3in,
+    headsep = .1in,
+    headheight = .3in,
+    footskip = .4in
+}
+\pagestyle{empty}
+
+% ##############
+% Formato de parrafos
+% ##############
+\setlength{\parskip}{.5\baselineskip}
+\setlength{\parindent}{0pt}
+\usepackage{setspace} % espaciado de los parrafos
+\onehalfspacing % 1.5 de espaciado de linea
+
+% ##############
+% Modificar el estilo de texto del documento
+% ##############
+
+% Estilo de Fonts
+\RequirePackage{fontspec}
+
+\setromanfont{PaperNotes}[
+    Path=./FontFiles/PaperNotes/,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Sketch
+    ]
+
+\newfontfamily{\titlefont}{ChampagneLimousines}[
+    Path=./FontFiles/ChampagneLimousines/,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+    ]
+
+% Small caps
+% Small Caps create
+\usepackage{graphicx}
+
+\makeatletter
+\newlength\fake@f
+\newlength\fake@c
+\def\fakesc#1{%
+  \begingroup%
+  \xdef\fake@name{\csname\curr@fontshape/\f@size\endcsname}%
+  \fontsize{\fontdimen8\fake@name}{\baselineskip}\selectfont%
+  \uppercase{#1}%
+  \endgroup%
+}
+\makeatother
+\newcommand\fauxsc[1]{\fauxschelper#1 \relax\relax}
+\def\fauxschelper#1 #2\relax{%
+  \fauxschelphelp#1\relax\relax%
+  \if\relax#2\relax\else\ \fauxschelper#2\relax\fi%
+}
+\def\Hscale{.8}\def\Vscale{.75}\def\Cscale{1.00}
+\def\fauxschelphelp#1#2\relax{%
+  \ifnum`#1=\lccode`#1\relax\scalebox{\Hscale}[\Vscale]{\char\uccode`#1}\else%
+    \scalebox{\Cscale}[1]{#1}\fi%
+  \ifx\relax#2\relax\else\fauxschelphelp#2\relax\fi}
+
+% ##############
+% Imagenes y Figuras
+% ##############
+\usepackage{graphicx} % para insertar imagenes en Latex
+\graphicspath{ {./Images/} } % le dice a latex donde están guardadas las figuras
+\usepackage{wrapfig}
+
+% ##############
+% Tablas
+% ##############
+\usepackage{array} % para poner las medidas del ancho del tabular
+\usepackage{nicematrix} % paquete para rellenar las celdas con un color de background
+
+% ##############
+% Tikz
+% ##############
+\usepackage{tikz}
+
+% ##############
+% Calc
+% ##############
+\usepackage{calc}
+
+% ##############
+% Xcolor
+% ##############
+\usepackage{xcolor}
+
+% ##############
+% ifthen
+% ##############
+\usepackage{ifthen}
+
+% ##############
+% Comandos de Secciones
+% ##############
+
+% section
+\newsavebox{\secimagbox}
+\newcommand{\mysection}[6]{%
+    \savebox{\secimagbox}{\includegraphics[width=#3]{#2}}
+    \begin{wrapfigure}[#5]{#4}{\wd\secimagbox}
+        \begin{tikzpicture} [remember picture]
+            \node [
+                fill,
+                rounded corners = 10pt,
+                inner sep=0pt,
+                line width=0pt,
+                minimum width=\wd\secimagbox,
+                minimum height=\ht\secimagbox,
+                path picture= {
+                    \node at (path picture bounding box.center) {\usebox{\secimagbox}};
+                }
+            ] {};
+        \end{tikzpicture}
+    \end{wrapfigure}
+
+    \vspace{-\parskip}
+    \ifthenelse{\equal{#4}{l}} {%
+        \textbf{\large\fauxsc{#1}}
+        
+        \begin{table}[htb!]
+            \hspace{\wd\secimagbox+6pt}
+            #6
+        \end{table}
+    }{%
+        \raggedleft
+        \textbf{\large\fauxsc{#1}}
+        
+        \begin{table}[htb!]
+            \raggedleft
+            #6
+            \hspace{\wd\secimagbox+6pt}
+        \end{table}
+    }
+    \raggedright
+    \vspace{-.5\baselineskip}
+}
+
+
+% \newcommand{\foo}[1]{%
+%   \ifthenelse{\equal{#1}{\string german}}
+%     {TRUE}
+%     {FALSE}%
+% }
