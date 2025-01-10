@@ -1,0 +1,31 @@
+\begin{minipage}{\textwidth}
+    \adjustbox{stack=cc}{
+    \begin{minipage}[c]{.275\linewidth}
+        \vspace{-10pt}
+        \begin{tikzpicture} [remember picture]
+            \node [
+                circle,
+                minimum width = \linewidth,
+                line width = 0pt,
+                % draw = white,
+                path picture = {
+                  \node at (path picture bounding box.center) {\includegraphics[width=\linewidth]{Images/photo.png}};
+                }
+            ] {};
+        \end{tikzpicture}
+    \end{minipage}}
+    \hfill
+    \begin{minipage}[c]{.675\linewidth}
+        % \vspace{-40pt}
+        % \setstretch{1.03448}
+        {\titlefont\scalefont{3}\textbf{DIEGO GONZÁLEZ}} \\[25pt]
+        {\sectionfont\LARGE \textcolor{fontcolor}{Ingeniero de Sonido}} \\[8pt]
+
+        \large
+        \hspace*{-1ex}
+        \begin{tabular}{@{}L{.47}@{}L{.53}@{}}
+            \cvicon{map-marker-area}{2.3ex}{1}~Itagüí, Antioquia &  \cvicon{email}{2.3ex}{1}~\myhref{mailto:diego.gonzalezloa@gmail.com}{diego.gonzalezloa@gmail.com} \\
+            \cvicon{phone-circle-fill}{2.3ex}{1}~\myhref{https://wa.me/3023443898}{(+57) 302 3443898} & \cvicon{instagram}{2.3ex}{1}~\myhref{https://www.instagram.com/diegogonzalezaudio/}{@diegogonzalezaudio} \\ 
+        \end{tabular}
+    \end{minipage}
+\end{minipage} \\[2\parskip]
