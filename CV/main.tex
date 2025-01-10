@@ -1,0 +1,21 @@
+\documentclass[twocolumn,12pt]{article}
+
+\input{preamble}
+
+\begin{document}
+
+    \input{Sections/title}
+    \input{Sections/work_experience}
+    \input{Sections/skills}
+    \newpage
+    \backgorund
+    \makebox[\columnwidth][c]{%
+    \begin{minipage}[t]{.85\columnwidth}
+        \setlength{\parskip}{.5\baselineskip}
+        \input{Sections/photo}
+        \input{Sections/contact}
+        \input{Sections/about_me}
+        \input{Sections/academic_training}
+    \end{minipage}}
+    
+\end{document}

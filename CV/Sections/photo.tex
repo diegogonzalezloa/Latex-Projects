@@ -1,0 +1,14 @@
+\centering
+\begin{tikzpicture} [remember picture]
+    \node [
+        circle,
+        minimum width = .775\linewidth,
+        line width = 3pt,
+        draw = white,
+        path picture = {
+          \node at (path picture bounding box.center) {\includegraphics[width=.775\linewidth]{Images/photo.png}};
+        }
+    ] {};
+\end{tikzpicture}
+
+\raggedright

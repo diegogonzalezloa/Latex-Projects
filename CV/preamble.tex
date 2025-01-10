@@ -1,0 +1,195 @@
+% ##############
+% Codificación para el idioma español
+% ##############
+%\usepackage[utf8]{inputenc} % input
+\usepackage[T1]{fontenc} % output
+%\usepackage[spanish,english]{babel} % idioma español para tablas, figuras, secciones, etc.
+
+% ##############
+% Dimensiones del documento
+% ##############
+\usepackage{geometry}
+\geometry{
+    letterpaper,
+    margin = .5in,
+    marginparsep = 0.1in,
+    marginparwidth = 0.3in,
+    headheight = 0.3in,
+    headsep = 0.1in,
+    footskip = 0.35in,
+}
+\setlength{\columnsep}{.2in}
+
+% Pages Styles
+\pagestyle{empty}
+
+% ##############
+% Formato de parrafos
+% ##############
+\setlength{\parskip}{.5\baselineskip}
+\setlength{\parindent}{0pt}
+
+% ##############
+% Modificar el estilo de texto del documento
+% ##############
+
+% Estilo de Fonts
+\usepackage{fontspec}
+
+\setromanfont{Author}[
+    Path=./FontFiles/Author/,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+    ]
+
+\newfontfamily{\fnamefont}{DancingScript}[
+    Path=./FontFiles/DancingScript/,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold
+    ]
+
+\newfontfamily{\snamefont}{CutiveMono}[
+    Path=./FontFiles/CutiveMono/,
+    Extension = .ttf,
+    UprightFont=*-Regular
+    ]
+    
+\newfontfamily{\sectionfont}{PublicSans}[
+    Path=./FontFiles/PublicSans/,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold
+    ]
+
+% Escala del Font size
+\usepackage{scalefnt}
+
+% ##############
+% Xcolor
+% ##############
+\usepackage{xcolor}
+\definecolor{fillcolor}{HTML}{ccc5b9}
+\definecolor{fillcolor2}{HTML}{eb5e28}
+\definecolor{linkcolor}{HTML}{eb5e28}
+
+% ##############
+% Calc
+% ##############
+\usepackage{calc}
+
+% ##############
+% Tabla
+% ##############
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{\dimexpr#1\linewidth-2\tabcolsep}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{\dimexpr#1\linewidth-2\tabcolsep}}
+\newcolumntype{J}[1]{>{\justifying\arraybackslash}p{\dimexpr#1\linewidth-2\tabcolsep}}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{\dimexpr#1\linewidth-2\tabcolsep}}
+
+% ##############
+% Imagenes y Figuras
+% ##############
+\usepackage{graphicx} % para insertar imagenes en Latex
+\graphicspath{Images/} % le dice a latex donde están guardadas las figuras
+
+% ##############
+% Tikz
+% ##############
+\usepackage{tikz}
+
+% ##############
+% SVG
+% ##############
+\usepackage[inkscapeformat=eps]{svg}
+
+% ##############
+% Adjust Box
+% ##############
+\usepackage{adjustbox}
+
+% ##############
+% Hipervinculos
+% ##############
+\usepackage[hidelinks]{hyperref}
+% \hypersetup{
+%     pdftitle={DiegoGonzalez_CV},
+%     pdfauthor={Diego Gonzalez}
+% }
+% Url personalizado
+\newcommand{\myurl}[1]{\adjustbox{cframe=linkcolor {1.5pt} {1pt} {-1.5pt-1pt}}{\url{#1}}}
+\newcommand{\myhref}[2]{\adjustbox{cframe=linkcolor {1.5pt} {2pt} {-1.5pt-2pt}}{\href{#1}{#2}}}
+\newcommand{\extlink}[2]{\adjustbox{stack=cc, cframe=linkcolor {1.5pt} {1pt} {-1.5pt-1pt}}{\href{#1}{\includesvg[width=2ex]{SVG/external-link.svg}}}}
+
+% ##############
+% My Items
+% ##############
+\newcommand{\myitem}{\adjustbox{stack=cc}{\includesvg[width=2ex]{SVG/check-circle.svg}}~~}
+
+% ##############
+% Overall Skill
+% ##############
+\newcommand{\overallskill}[1]{
+    \adjustbox{stack=cc}{
+    \begin{tikzpicture} [remember picture, rounded corners]
+        \draw [fill=fillcolor,draw=none] (0,0) rectangle (\linewidth+2\tabcolsep,.8em);
+        \draw [fill=fillcolor2,draw=none] (0,0) rectangle (#1\linewidth+2\tabcolsep,.8em);
+    \end{tikzpicture}}
+}
+
+% ##############
+% My Section
+% ##############
+\newcommand{\mysection}[1]{
+    \vspace{1.5\parskip}
+    \begin{tikzpicture} [remember picture]
+        \node [
+            rectangle, 
+            rounded corners=8pt, 
+            text width=\linewidth-8pt, 
+            inner sep=4pt,
+            align=center,
+            fill=fillcolor
+            ] {\sectionfont\small \textbf{#1}};
+    \end{tikzpicture}\par
+}
+
+\newcommand{\mysectiontwo}[1]{
+    \vspace{1.5\parskip}
+    \begin{tikzpicture} [remember picture]
+        \node [
+            rectangle, 
+            rounded corners=8pt, 
+            text width=\linewidth-8pt, 
+            inner sep=4pt,
+            align=center,
+            fill=white
+            ] {\sectionfont\small \textbf{#1}};
+    \end{tikzpicture}\par
+}
+
+% ##############
+% Background
+% ##############
+\newcommand{\backgorund}{
+    \begin{tikzpicture} [remember picture, overlay]
+        \node at (0pt,13pt) [
+            % below right,
+            anchor = north west,
+            fill = fillcolor,
+            rounded corners = .25\columnwidth,
+            minimum width=\columnwidth,
+            minimum height=\textheight
+        ] {};
+    \end{tikzpicture}
+}
+
+% ##############
+% Paquetes de Visualización para crear el documento
+% ##############
+% \usepackage{layout}
+% \usepackage{showframe}
+% \usepackage{lipsum}
